@@ -1,0 +1,46 @@
+﻿<div style="max-width:800px; margin:24px auto; display:flex; flex-direction:column;gap:24px;">
+
+    <IgbGrid Data="this._sampleData"
+             PrimaryKey="@nameof(Person.Id)"
+             AutoGenerate="false"
+             Height="300px"
+             DisplayDensity="DisplayDensity.Compact"
+             AllowFiltering="true"
+             FilterMode="FilterMode.ExcelStyleFilter"
+             Moving="true"
+             ResourceStrings="GridResourceStrings.JA">
+
+        <IgbGridToolbar>
+            <IgbGridToolbarActions>
+                <IgbGridToolbarExporter />
+            </IgbGridToolbarActions>
+        </IgbGridToolbar>
+
+        <IgbColumn Header="Id" Field="@nameof(Person.Id)" DataType="GridColumnDataType.Number" Sortable="true" />
+
+        <IgbColumn Header="氏名" Field="@nameof(Person.Name)" Sortable="true" />
+
+        <IgbColumn Header="年齢" Field="@nameof(Person.Age)" DataType="GridColumnDataType.Number" Sortable="true" />
+
+    </IgbGrid>
+
+</div>
+
+@code
+{
+    public class Person
+    {
+        public int Id { get; set; }
+        public string? Name { get; set; }
+        public int Age { get; set; }
+    }
+
+    private readonly List<Person> _sampleData = new()
+    {
+        new() { Id =  1, Name =    "Bob", Age = 40 },
+        new() { Id =  2, Name =    "Kate", Age = 30 },
+        new() { Id =  3, Name =    "Dave", Age = 50 },
+        new() { Id =  4, Name =  "Freddy", Age = 20 },
+        new() { Id =  5, Name =     "Ian", Age = 40 },
+    };
+}
